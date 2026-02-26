@@ -1,4 +1,4 @@
-# Agents
+   # Agents
 
 Specialized agents for complex, multi-step tasks.
 
@@ -16,7 +16,7 @@ Agents are autonomous Claude instances that handle specific complex tasks. Unlik
 
 ---
 
-## Available Agents (10)
+## Available Agents (17)
 
 ### code-architecture-reviewer
 **Purpose:** Review code for architectural consistency and best practices
@@ -146,6 +146,81 @@ Agents are autonomous Claude instances that handle specific complex tasks. Unlik
 
 ---
 
+### prd-writer
+**Purpose:** Generate comprehensive Product Requirements Documents
+
+**When to use:**
+- Converting feature requests to formal PRDs
+- Creating documentation for new features
+- Standardizing requirements across teams
+
+**Integration:** ✅ Copy as-is
+
+---
+
+### tech-debt-analyzer
+**Purpose:** Analyze codebase for technical debt and create remediation plans
+
+**When to use:**
+- Quarterly tech debt reviews
+- Before major refactoring initiatives
+- Planning sprint capacity for debt reduction
+
+**Integration:** ✅ Copy as-is
+
+---
+
+### python-code-reviewer
+**Purpose:** Review Python code for best practices and type safety
+
+**When to use:**
+- Before merging Python code changes
+- After implementing new Python features
+- During code review process
+
+**Integration:** ✅ Copy as-is
+
+---
+
+### yolo-fixer
+**Purpose:** Automatically fix all issues without asking for confirmation
+
+**When to use:**
+- When you want things fixed automatically
+- Quick cleanup tasks
+- Non-technical users who want things "just work"
+
+**Integration:** ✅ Copy as-is
+
+---
+
+### ux-writer
+**Purpose:** Expert-level UX writing for interfaces, microcopy, and user flows
+
+**When to use:**
+- Writing button labels and CTAs
+- Creating error messages and validation text
+- Designing empty states and onboarding copy
+- Writing form labels and help text
+
+**Integration:** ✅ Copy as-is
+
+---
+
+### browser-automation
+**Purpose:** Automate browser interactions with Playwright/Puppeteer
+
+**When to use:**
+- Web scraping and data extraction
+- E2E testing
+- Automated screenshots
+- Form automation
+- Browser-based workflows
+
+**Integration:** ✅ Copy as-is
+
+---
+
 ## How to Integrate an Agent
 
 ### Standard Integration (Most Agents)
@@ -217,6 +292,9 @@ That's it! Agents work immediately.
 | auth-route-tester | Medium | ⚠️ Auth setup | JWT cookies |
 | auth-route-debugger | Medium | ⚠️ Auth setup | JWT cookies |
 | auto-error-resolver | Low | ⚠️ Paths | No |
+| prd-writer | Medium | ✅ None | No |
+| tech-debt-analyzer | High | ✅ None | No |
+| python-code-reviewer | Medium | ✅ None | No |
 
 ---
 

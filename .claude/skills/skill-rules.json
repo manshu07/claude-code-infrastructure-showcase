@@ -60,28 +60,6 @@
                     "(organize|structure|refactor).*?(backend|service|API)",
                     "(how to|best practice).*?(backend|route|controller|service)"
                 ]
-            },
-            "fileTriggers": {
-                "pathPatterns": [
-                    "blog-api/src/**/*.ts",
-                    "auth-service/src/**/*.ts",
-                    "notifications-service/src/**/*.ts",
-                    "backend/**/*.ts",
-                    "api/**/*.ts",
-                    "server/**/*.ts",
-                    "services/**/*.ts"
-                ],
-                "pathExclusions": [
-                    "**/*.test.ts",
-                    "**/*.spec.ts"
-                ],
-                "contentPatterns": [
-                    "router\\.",
-                    "app\\.(get|post|put|delete|patch)",
-                    "export.*Controller",
-                    "export.*Service",
-                    "prisma\\."
-                ]
             }
         },
         "frontend-dev-guidelines": {
@@ -112,39 +90,10 @@
                     "(style|design|layout).*?(component|UI)"
                 ]
             },
-            "fileTriggers": {
-                "pathPatterns": [
-                    "frontend/src/**/*.tsx",
-                    "frontend/src/**/*.ts",
-                    "client/src/**/*.tsx",
-                    "client/src/**/*.ts",
-                    "src/**/*.tsx"
-                ],
-                "pathExclusions": [
-                    "**/*.test.tsx",
-                    "**/*.test.ts",
-                    "**/*.spec.tsx",
-                    "**/*.spec.ts",
-                    "**/*.styles.ts",
-                    "**/vite.config.ts",
-                    "**/tsconfig.json"
-                ],
-                "contentPatterns": [
-                    "from '@mui/material';",
-                    "import.*Grid.*from.*@mui",
-                    "<Grid ",
-                    "Grid2",
-                    "Unstable_Grid",
-                    "makeStyles",
-                    "@material-ui/core"
-                ]
-            },
-            "blockMessage": "⚠️ BLOCKED - Frontend Best Practices Required\n\n📋 REQUIRED ACTION:\n1. Use Skill tool: 'frontend-dev-guidelines'\n2. Review MUI v7 patterns (Grid uses size={{}} prop, NOT xs/sm props)\n3. Check React/TypeScript best practices\n4. Use proper styling patterns\n5. Then retry this edit\n\nReason: Enforce MUI v7 compatibility and React best practices\nFile: {file_path}\n\n💡 TIP: Add '// @skip-validation' comment to skip future checks",
+            "blockMessage": "Frontend guidelines required - use 'frontend-dev-guidelines' skill",
             "skipConditions": {
                 "sessionSkillUsed": true,
-                "fileMarkers": [
-                    "@skip-validation"
-                ],
+                "fileMarkers": ["@skip-validation"],
                 "envOverride": "SKIP_FRONTEND_GUIDELINES"
             }
         },
@@ -170,17 +119,6 @@
                     "(how to|how do I).*?test.*?(route|endpoint|API)",
                     "test.*?(authenticated|auth|JWT|cookie)"
                 ]
-            },
-            "fileTriggers": {
-                "pathPatterns": [
-                    "**/routes/**/*.ts",
-                    "**/test-*.js",
-                    "**/test-*.ts"
-                ],
-                "contentPatterns": [
-                    "router\\.(get|post|put|delete|patch)",
-                    "app\\.(get|post|put|delete|patch)"
-                ]
             }
         },
         "error-tracking": {
@@ -203,19 +141,217 @@
                     "(fix|handle|catch).*?(error|exception)",
                     "(how to|best practice).*?(error|sentry|monitoring)"
                 ]
-            },
-            "fileTriggers": {
-                "pathPatterns": [
-                    "**/instrument.ts",
-                    "**/sentry*.ts",
-                    "**/*Controller.ts",
-                    "**/*Service.ts"
+            }
+        },
+        "python-dev-guidelines": {
+            "type": "domain",
+            "enforcement": "suggest",
+            "priority": "high",
+            "description": "Comprehensive Python development guidelines for backend development",
+            "promptTriggers": {
+                "keywords": [
+                    "python",
+                    "python development",
+                    "pyproject.toml",
+                    "virtual environment",
+                    "venv",
+                    "pip",
+                    "poetry",
+                    "uv",
+                    "pydantic",
+                    "asyncio",
+                    "pytest",
+                    "mypy",
+                    "ruff",
+                    "type hints",
+                    "python testing",
+                    "python async"
                 ],
-                "contentPatterns": [
-                    "@sentry",
-                    "Sentry\\.",
-                    "captureException",
-                    "captureMessage"
+                "intentPatterns": [
+                    "(create|add|implement|build).*?(python|module|package)",
+                    "(setup|configure).*?(python|project|environment)",
+                    "(how to|best practice).*?(python|async|testing)",
+                    "(fix|debug).*?(python|type|mypy)"
+                ]
+            }
+        },
+        "django-dev-guidelines": {
+            "type": "domain",
+            "enforcement": "suggest",
+            "priority": "high",
+            "description": "Django development guidelines for web applications and APIs",
+            "promptTriggers": {
+                "keywords": [
+                    "django",
+                    "django rest framework",
+                    "DRF",
+                    "django models",
+                    "django views",
+                    "django serializer",
+                    "django urls",
+                    "django middleware",
+                    "django authentication",
+                    "django ORM",
+                    "manage.py",
+                    "migrations",
+                    "django admin"
+                ],
+                "intentPatterns": [
+                    "(create|add|implement|build).*?(django|model|view|serializer|API)",
+                    "(setup|configure).*?(django|project)",
+                    "(how to|best practice).*?(django|DRF)",
+                    "(fix|debug).*?(django|migrations)"
+                ]
+            }
+        },
+        "fastapi-dev-guidelines": {
+            "type": "domain",
+            "enforcement": "suggest",
+            "priority": "high",
+            "description": "FastAPI development guidelines for high-performance APIs",
+            "promptTriggers": {
+                "keywords": [
+                    "fastapi",
+                    "fast api",
+                    "pydantic model",
+                    "APIRouter",
+                    "dependency injection",
+                    "path operation",
+                    "fastapi middleware",
+                    "fastapi authentication",
+                    "uvicorn",
+                    "fastapi testing"
+                ],
+                "intentPatterns": [
+                    "(create|add|implement|build).*?(fastapi|route|endpoint|API)",
+                    "(setup|configure).*?(fastapi|project)",
+                    "(how to|best practice).*?(fastapi|pydantic)",
+                    "(fix|debug).*?(fastapi|pydantic|validation)"
+                ]
+            }
+        },
+        "pm-guidelines": {
+            "type": "domain",
+            "enforcement": "suggest",
+            "priority": "high",
+            "description": "Product management guidelines for planning, documentation, and stakeholder communication",
+            "promptTriggers": {
+                "keywords": [
+                    "PRD",
+                    "product requirements",
+                    "user story",
+                    "acceptance criteria",
+                    "sprint planning",
+                    "roadmap",
+                    "backlog",
+                    "stakeholder",
+                    "product manager",
+                    "PM",
+                    "feature request",
+                    "product roadmap",
+                    "sprint",
+                    "epic",
+                    "user stories",
+                    "product metrics",
+                    "KPIs",
+                    "product goals"
+                ],
+                "intentPatterns": [
+                    "(create|write|draft).*?(PRD|requirements|user story|roadmap)",
+                    "(plan|organize).*?(sprint|release|roadmap)",
+                    "(how to|best practice).*?(product management|sprint|roadmap)",
+                    "(prioritize|prioritization).*?(features|backlog)",
+                    "(communicate|update).*?stakeholder"
+                ]
+            }
+        },
+        "cto-guidelines": {
+            "type": "domain",
+            "enforcement": "suggest",
+            "priority": "high",
+            "description": "Technical leadership guidelines for architecture, team management, and engineering excellence",
+            "promptTriggers": {
+                "keywords": [
+                    "architecture decision",
+                    "ADR",
+                    "technical debt",
+                    "team scaling",
+                    "hiring engineers",
+                    "security standards",
+                    "incident response",
+                    "vendor management",
+                    "CTO",
+                    "tech lead",
+                    "engineering manager",
+                    "build vs buy",
+                    "technology selection",
+                    "engineering culture",
+                    "code review standards",
+                    "tech roadmap"
+                ],
+                "intentPatterns": [
+                    "(make|review).*?(architecture|technical).*?decision",
+                    "(manage|reduce).*?technical.*?debt",
+                    "(hire|scale|grow).*?(engineering|team|developer)",
+                    "(handle|respond).*?incident",
+                    "(evaluate|select|choose).*?(vendor|technology|tool)",
+                    "(build vs buy|make vs buy).*?decision"
+                ]
+            }
+        },
+        "shadcn-ui-guidelines": {
+            "type": "domain",
+            "enforcement": "suggest",
+            "priority": "high",
+            "description": "Default design system using shadcn-ui, Tailwind CSS, and Inter font for consistent UI",
+            "promptTriggers": {
+                "keywords": [
+                    "shadcn",
+                    "shadcn-ui",
+                    "tailwind",
+                    "tailwind css",
+                    "UI component",
+                    "button",
+                    "card",
+                    "dialog",
+                    "form input",
+                    "inter font",
+                    "design system"
+                ],
+                "intentPatterns": [
+                    "(create|build|add).*?(component|button|card|dialog|form)",
+                    "(style|design).*?(component|UI|interface)",
+                    "(use|implement).*?(shadcn|tailwind)",
+                    "(create|build).*?(frontend|UI|interface)"
+                ]
+            }
+        },
+        "browser-automation": {
+            "type": "domain",
+            "enforcement": "suggest",
+            "priority": "high",
+            "description": "Browser automation with Playwright/Puppeteer for web scraping, testing, and automated workflows",
+            "promptTriggers": {
+                "keywords": [
+                    "playwright",
+                    "puppeteer",
+                    "browser automation",
+                    "web scraping",
+                    "scrape",
+                    "screenshot",
+                    "E2E test",
+                    "end to end test",
+                    "browser test",
+                    "automate browser",
+                    "page click",
+                    "page fill"
+                ],
+                "intentPatterns": [
+                    "(automate|automation).*?(browser|web|page)",
+                    "(scrape|extract).*?(website|page|data)",
+                    "(test|testing).*?(browser|e2e|end.to.end)",
+                    "(take|capture).*?(screenshot|screenshot)",
+                    "(click|fill|navigate).*?(page|browser|website)"
                 ]
             }
         }
@@ -233,7 +369,7 @@
             "low": "Optional - Trigger only for explicit matches"
         },
         "customization": {
-            "pathPatterns": "Adjust to match your project structure (blog-api, auth-service, etc.)",
+            "pathPatterns": "Adjust to match your project structure",
             "keywords": "Add domain-specific terms relevant to your project",
             "intentPatterns": "Use regex for flexible user intent matching"
         }
