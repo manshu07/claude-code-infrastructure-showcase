@@ -13,9 +13,11 @@ Born from 6 months of real-world use managing a complex TypeScript microservices
 **Production-tested infrastructure for:**
 - ✅ **Auto-activating skills** via hooks
 - ✅ **Modular skill pattern** (500-line rule with progressive disclosure)
-- ✅ **Specialized agents** for complex tasks
+- ✅ **12 specialized skills** covering backend, frontend, DevOps, and more
+- ✅ **16 specialized agents** for complex tasks
 - ✅ **Dev docs system** that survives context resets
 - ✅ **Comprehensive examples** using generic blog domain
+- ✅ **Non-technical guide** for users of all skill levels
 
 **Time investment to build:** 6 months of iteration
 **Time to integrate into your project:** 15-30 minutes
@@ -43,25 +45,57 @@ Born from 6 months of real-world use managing a complex TypeScript microservices
 
 Browse the [skills catalog](.claude/skills/) and copy what you need.
 
-**Available:**
+**Available Skills:**
+
+**Backend Development:**
 - **backend-dev-guidelines** - Node.js/Express/TypeScript patterns
+- **python-dev-guidelines** - Python development best practices
+- **django-dev-guidelines** - Django web framework patterns
+- **fastapi-dev-guidelines** - FastAPI high-performance APIs
+
+**Frontend Development:**
 - **frontend-dev-guidelines** - React/TypeScript/MUI v7 patterns
-- **skill-developer** - Meta-skill for creating skills
-- **route-tester** - Test authenticated API routes
+- **shadcn-ui-guidelines** - shadcn-ui/Tailwind CSS components
+
+**DevOps & Quality:**
+- **browser-automation** - Playwright/Puppeteer automation
 - **error-tracking** - Sentry integration patterns
+
+**Leadership & Process:**
+- **cto-guidelines** - Technical leadership & architecture decisions
+- **pm-guidelines** - Product management & planning
+
+**Meta:**
+- **skill-developer** - Create and manage skills
+- **route-tester** - Test authenticated API routes
 
 **👉 [Skills Guide: .claude/skills/README.md](.claude/skills/README.md)**
 
 ### 🤖 I want specialized agents
 
-10 production-tested agents for complex tasks:
+16 production-tested agents for complex tasks:
+
+**Development Agents:**
 - Code architecture review
 - Refactoring assistance
+- Python code review
+- Browser automation
+
+**Documentation & Planning:**
+- PRD writing
+- UX writing
 - Documentation generation
+
+**Quality & Debugging:**
 - Error debugging
-- And more...
+- Tech debt analysis
+- YOLO fixing (quick fixes)
 
 **👉 [Agents Guide: .claude/agents/README.md](.claude/agents/README.md)**
+
+### 👶 New to Claude Code?
+
+**Start here:** Read [`NON-TECH-GUIDE.md`](NON-TECH-GUIDE.md) for a beginner-friendly introduction to using this repository.
 
 ---
 
@@ -111,25 +145,38 @@ skill-name/
 
 ```
 .claude/
-├── skills/                 # 5 production skills
-│   ├── backend-dev-guidelines/  (12 resource files)
-│   ├── frontend-dev-guidelines/ (11 resource files)
-│   ├── skill-developer/         (7 resource files)
-│   ├── route-tester/
-│   ├── error-tracking/
+├── skills/                 # 12 production skills
+│   ├── backend-dev-guidelines/  (Node.js/Express/TypeScript)
+│   ├── frontend-dev-guidelines/ (React/MUI v7/TypeScript)
+│   ├── python-dev-guidelines/   (Python best practices)
+│   ├── django-dev-guidelines/   (Django web framework)
+│   ├── fastapi-dev-guidelines/  (FastAPI high-performance APIs)
+│   ├── shadcn-ui-guidelines/    (shadcn-ui/Tailwind CSS)
+│   ├── browser-automation/      (Playwright/Puppeteer)
+│   ├── cto-guidelines/          (Technical leadership)
+│   ├── pm-guidelines/           (Product management)
+│   ├── skill-developer/         (Create your own skills)
+│   ├── route-tester/            (API testing)
+│   ├── error-tracking/          (Sentry integration)
 │   └── skill-rules.json    # Skill activation configuration
-├── hooks/                  # 6 hooks for automation
+├── hooks/                  # 7 hooks for automation
 │   ├── skill-activation-prompt.*  (ESSENTIAL)
 │   ├── post-tool-use-tracker.sh   (ESSENTIAL)
+│   ├── auto-code-review.sh        (NEW - automated reviews)
 │   ├── tsc-check.sh        (optional, needs customization)
 │   └── trigger-build-resolver.sh  (optional)
-├── agents/                 # 10 specialized agents
+├── agents/                 # 16 specialized agents
 │   ├── code-architecture-reviewer.md
-│   ├── refactor-planner.md
-│   ├── frontend-error-fixer.md
-│   └── ... 7 more
-└── commands/               # 3 slash commands
+│   ├── python-code-reviewer.md     (NEW)
+│   ├── browser-automation.md       (NEW)
+│   ├── prd-writer.md               (NEW)
+│   ├── ux-writer.md                (NEW)
+│   ├── tech-debt-analyzer.md       (NEW)
+│   ├── yolo-fixer.md               (NEW)
+│   └── ... 9 more
+└── commands/               # 4 slash commands
     ├── dev-docs.md
+    ├── browser-test.md     (NEW)
     └── ...
 
 dev/
@@ -141,26 +188,56 @@ dev/
 
 ## Component Catalog
 
-### 🎨 Skills (5)
+### 🎨 Skills (12)
 
-| Skill | Lines | Purpose | Best For |
-|-------|-------|---------|----------|
-| [**skill-developer**](.claude/skills/skill-developer/) | 426 | Creating and managing skills | Meta-development |
-| [**backend-dev-guidelines**](.claude/skills/backend-dev-guidelines/) | 304 | Express/Prisma/Sentry patterns | Backend APIs |
-| [**frontend-dev-guidelines**](.claude/skills/frontend-dev-guidelines/) | 398 | React/MUI v7/TypeScript | React frontends |
-| [**route-tester**](.claude/skills/route-tester/) | 389 | Testing authenticated routes | API testing |
-| [**error-tracking**](.claude/skills/error-tracking/) | ~250 | Sentry integration | Error monitoring |
+**Backend Development:**
+
+| Skill | Purpose | Best For |
+|-------|---------|----------|
+| [**backend-dev-guidelines**](.claude/skills/backend-dev-guidelines/) | Express/Prisma/Sentry patterns | Node.js APIs |
+| [**python-dev-guidelines**](.claude/skills/python-dev-guidelines/) | Python best practices, async, testing | Python projects |
+| [**django-dev-guidelines**](.claude/skills/django-dev-guidelines/) | Django models, views, DRF patterns | Django web apps |
+| [**fastapi-dev-guidelines**](.claude/skills/fastapi-dev-guidelines/) | FastAPI routing, Pydantic, auth | High-performance APIs |
+
+**Frontend Development:**
+
+| Skill | Purpose | Best For |
+|-------|---------|----------|
+| [**frontend-dev-guidelines**](.claude/skills/frontend-dev-guidelines/) | React/MUI v7/TypeScript patterns | React frontends |
+| [**shadcn-ui-guidelines**](.claude/skills/shadcn-ui-guidelines/) | shadcn-ui components, Tailwind CSS | Modern UI development |
+
+**DevOps & Quality:**
+
+| Skill | Purpose | Best For |
+|-------|---------|----------|
+| [**browser-automation**](.claude/skills/browser-automation/) | Playwright/Puppeteer patterns | Web scraping, testing |
+| [**error-tracking**](.claude/skills/error-tracking/) | Sentry integration patterns | Error monitoring |
+
+**Leadership & Process:**
+
+| Skill | Purpose | Best For |
+|-------|---------|----------|
+| [**cto-guidelines**](.claude/skills/cto-guidelines/) | Architecture decisions, team scaling | Tech leaders |
+| [**pm-guidelines**](.claude/skills/pm-guidelines/) | PRDs, roadmaps, stakeholder communication | Product managers |
+
+**Meta & Utilities:**
+
+| Skill | Purpose | Best For |
+|-------|---------|----------|
+| [**skill-developer**](.claude/skills/skill-developer/) | Create and manage Claude Code skills | Custom skills |
+| [**route-tester**](.claude/skills/route-tester/) | Test authenticated API routes | API testing |
 
 **All skills follow the modular pattern** - main file + resource files for progressive disclosure.
 
 **👉 [How to integrate skills →](.claude/skills/README.md)**
 
-### 🪝 Hooks (6)
+### 🪝 Hooks (7)
 
 | Hook | Type | Essential? | Customization |
 |------|------|-----------|---------------|
 | skill-activation-prompt | UserPromptSubmit | ✅ YES | ✅ None needed |
 | post-tool-use-tracker | PostToolUse | ✅ YES | ✅ None needed |
+| auto-code-review | PreToolUse | ⚠️ Optional | ✅ None needed |
 | tsc-check | Stop | ⚠️ Optional | ⚠️ Heavy - monorepo only |
 | trigger-build-resolver | Stop | ⚠️ Optional | ⚠️ Heavy - monorepo only |
 | error-handling-reminder | Stop | ⚠️ Optional | ⚠️ Moderate |
@@ -170,32 +247,61 @@ dev/
 
 **👉 [Hook setup guide →](.claude/hooks/README.md)**
 
-### 🤖 Agents (10)
+### 🤖 Agents (16)
 
 **Standalone - just copy and use!**
+
+**Code Quality & Review:**
 
 | Agent | Purpose |
 |-------|---------|
 | code-architecture-reviewer | Review code for architectural consistency |
+| python-code-reviewer | Python-specific code review |
+| tech-debt-analyzer | Analyze and track technical debt |
+
+**Development & Refactoring:**
+
+| Agent | Purpose |
+|-------|---------|
 | code-refactor-master | Plan and execute refactoring |
-| documentation-architect | Generate comprehensive documentation |
-| frontend-error-fixer | Debug frontend errors |
-| plan-reviewer | Review development plans |
 | refactor-planner | Create refactoring strategies |
-| web-research-specialist | Research technical issues online |
+| browser-automation | Browser automation and scraping tasks |
+| yolo-fixer | Quick fixes without extensive planning |
+
+**Documentation & Planning:**
+
+| Agent | Purpose |
+|-------|---------|
+| documentation-architect | Generate comprehensive documentation |
+| prd-writer | Write Product Requirements Documents |
+| ux-writer | UX copy and user experience content |
+| plan-reviewer | Review development plans |
+
+**Debugging & Testing:**
+
+| Agent | Purpose |
+|-------|---------|
+| frontend-error-fixer | Debug frontend errors |
+| auto-error-resolver | Auto-fix TypeScript errors |
 | auth-route-tester | Test authenticated endpoints |
 | auth-route-debugger | Debug auth issues |
-| auto-error-resolver | Auto-fix TypeScript errors |
+
+**Research:**
+
+| Agent | Purpose |
+|-------|---------|
+| web-research-specialist | Research technical issues online |
 
 **👉 [How agents work →](.claude/agents/README.md)**
 
-### 💬 Slash Commands (3)
+### 💬 Slash Commands (4)
 
 | Command | Purpose |
 |---------|---------|
 | /dev-docs | Create structured dev documentation |
 | /dev-docs-update | Update docs before context reset |
 | /route-research-for-testing | Research route patterns for testing |
+| /browser-test | Run browser automation tests |
 
 ---
 
@@ -352,6 +458,7 @@ MIT License - Use freely in your projects, commercial or personal.
 ## Quick Links
 
 - 📖 [Claude Integration Guide](CLAUDE_INTEGRATION_GUIDE.md) - For AI-assisted setup
+- 👶 [Non-Technical Guide](NON-TECH-GUIDE.md) - Beginner-friendly introduction
 - 🎨 [Skills Documentation](.claude/skills/README.md)
 - 🪝 [Hooks Setup](.claude/hooks/README.md)
 - 🤖 [Agents Guide](.claude/agents/README.md)
