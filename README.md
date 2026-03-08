@@ -13,11 +13,13 @@ Born from 6 months of real-world use managing a complex TypeScript microservices
 **Production-tested infrastructure for:**
 - ✅ **Auto-activating skills** via hooks
 - ✅ **Modular skill pattern** (500-line rule with progressive disclosure)
-- ✅ **12 specialized skills** covering backend, frontend, DevOps, and more
+- ✅ **34 specialized skills** covering backend, frontend, DevOps, AI, and more
 - ✅ **16 specialized agents** for complex tasks
 - ✅ **Dev docs system** that survives context resets
 - ✅ **Comprehensive examples** using generic blog domain
 - ✅ **Non-technical guide** for users of all skill levels
+- ✅ **Orchestration patterns** for agent-skill collaboration
+- ✅ **MCP integration** for extended capabilities
 
 **Time investment to build:** 6 months of iteration
 **Time to integrate into your project:** 15-30 minutes
@@ -45,25 +47,58 @@ Born from 6 months of real-world use managing a complex TypeScript microservices
 
 Browse the [skills catalog](.claude/skills/) and copy what you need.
 
-**Available Skills:**
+**Available Skills (34 total):**
 
 **Backend Development:**
 - **backend-dev-guidelines** - Node.js/Express/TypeScript patterns
 - **python-dev-guidelines** - Python development best practices
 - **django-dev-guidelines** - Django web framework patterns
 - **fastapi-dev-guidelines** - FastAPI high-performance APIs
+- **api-design** - REST API design patterns
 
 **Frontend Development:**
 - **frontend-dev-guidelines** - React/TypeScript/MUI v7 patterns
 - **shadcn-ui-guidelines** - shadcn-ui/Tailwind CSS components
+- **frontend-slides** - Create HTML presentations from scratch
 
-**DevOps & Quality:**
+**DevOps & Infrastructure:**
+- **devops-guidelines** - CI/CD, Docker, deployment strategies
 - **browser-automation** - Playwright/Puppeteer automation
+
+**Quality & Testing:**
+- **testing-guidelines** - Unit, integration, E2E testing
+- **tdd-workflow** - Test-driven development workflow
 - **error-tracking** - Sentry integration patterns
+- **coding-standards** - Project coding standards and best practices
+
+**Security & Performance:**
+- **security-guidelines** - OWASP Top 10, API security
+- **performance-optimization** - Frontend/backend optimization
+
+**AI & Agents:**
+- **agentic-engineering** - Operate as an agentic engineer
+- **ai-first-engineering** - AI-first engineering operating model
+- **agent-harness-construction** - Design AI agent action spaces
+- **continuous-agent-loop** - Continuous autonomous agent loops
+- **cost-aware-llm-pipeline** - Cost optimization for LLM usage
+- **continuous-learning** - Extract reusable patterns from sessions
+- **continuous-learning-v2** - Instinct-based learning system
 
 **Leadership & Process:**
 - **cto-guidelines** - Technical leadership & architecture decisions
 - **pm-guidelines** - Product management & planning
+
+**Content & Marketing:**
+- **article-writing** - Write articles, guides, blog posts
+- **content-engine** - Multi-platform content systems
+- **market-research** - Market research and competitive analysis
+- **investor-materials** - Pitch decks, financial models
+- **investor-outreach** - Investor communications and outreach
+
+**Specialized Tools:**
+- **pricing-master** - Pricing strategy and optimization
+- **strategic-compact** - Context compaction strategies
+- **verification-loop** - Comprehensive session verification
 
 **Meta:**
 - **skill-developer** - Create and manage skills
@@ -145,7 +180,7 @@ skill-name/
 
 ```
 .claude/
-├── skills/                 # 12 production skills
+├── skills/                 # 34 production skills
 │   ├── backend-dev-guidelines/  (Node.js/Express/TypeScript)
 │   ├── frontend-dev-guidelines/ (React/MUI v7/TypeScript)
 │   ├── python-dev-guidelines/   (Python best practices)
@@ -159,7 +194,7 @@ skill-name/
 │   ├── route-tester/            (API testing)
 │   ├── error-tracking/          (Sentry integration)
 │   └── skill-rules.json    # Skill activation configuration
-├── hooks/                  # 7 hooks for automation
+├── hooks/                  # 10 hooks for automation
 │   ├── skill-activation-prompt.*  (ESSENTIAL)
 │   ├── post-tool-use-tracker.sh   (ESSENTIAL)
 │   ├── auto-code-review.sh        (NEW - automated reviews)
@@ -174,7 +209,7 @@ skill-name/
 │   ├── tech-debt-analyzer.md       (NEW)
 │   ├── yolo-fixer.md               (NEW)
 │   └── ... 9 more
-└── commands/               # 4 slash commands
+└── commands/               # 5 slash commands
     ├── dev-docs.md
     ├── browser-test.md     (NEW)
     └── ...
@@ -188,7 +223,7 @@ dev/
 
 ## Component Catalog
 
-### 🎨 Skills (12)
+### 🎨 Skills (34)
 
 **Backend Development:**
 
@@ -198,6 +233,7 @@ dev/
 | [**python-dev-guidelines**](.claude/skills/python-dev-guidelines/) | Python best practices, async, testing | Python projects |
 | [**django-dev-guidelines**](.claude/skills/django-dev-guidelines/) | Django models, views, DRF patterns | Django web apps |
 | [**fastapi-dev-guidelines**](.claude/skills/fastapi-dev-guidelines/) | FastAPI routing, Pydantic, auth | High-performance APIs |
+| [**api-design**](.claude/skills/api-design/) | REST API design patterns | API architecture |
 
 **Frontend Development:**
 
@@ -205,13 +241,42 @@ dev/
 |-------|---------|----------|
 | [**frontend-dev-guidelines**](.claude/skills/frontend-dev-guidelines/) | React/MUI v7/TypeScript patterns | React frontends |
 | [**shadcn-ui-guidelines**](.claude/skills/shadcn-ui-guidelines/) | shadcn-ui components, Tailwind CSS | Modern UI development |
+| [**frontend-slides**](.claude/skills/frontend-slides/) | Create HTML presentations | Presentations & pitches |
 
-**DevOps & Quality:**
+**DevOps & Infrastructure:**
 
 | Skill | Purpose | Best For |
 |-------|---------|----------|
+| [**devops-guidelines**](.claude/skills/devops-guidelines/) | CI/CD, Docker, deployment | DevOps workflows |
 | [**browser-automation**](.claude/skills/browser-automation/) | Playwright/Puppeteer patterns | Web scraping, testing |
+
+**Quality & Testing:**
+
+| Skill | Purpose | Best For |
+|-------|---------|----------|
+| [**testing-guidelines**](.claude/skills/testing-guidelines/) | Unit, integration, E2E testing | Testing strategy |
+| [**tdd-workflow**](.claude/skills/tdd-workflow/) | Test-driven development workflow | TDD implementation |
 | [**error-tracking**](.claude/skills/error-tracking/) | Sentry integration patterns | Error monitoring |
+| [**coding-standards**](.claude/skills/coding-standards/) | Project coding standards | Code consistency |
+
+**Security & Performance:**
+
+| Skill | Purpose | Best For |
+|-------|---------|----------|
+| [**security-guidelines**](.claude/skills/security-guidelines/) | OWASP Top 10, API security | Security audits |
+| [**performance-optimization**](.claude/skills/performance-optimization/) | Frontend/backend optimization | Performance tuning |
+
+**AI & Agents:**
+
+| Skill | Purpose | Best For |
+|-------|---------|----------|
+| [**agentic-engineering**](.claude/skills/agentic-engineering/) | Agentic engineering patterns | AI agent development |
+| [**ai-first-engineering**](.claude/skills/ai-first-engineering/) | AI-first development model | AI-powered teams |
+| [**agent-harness-construction**](.claude/skills/agent-harness-construction/) | Design AI agent action spaces | Agent architecture |
+| [**continuous-agent-loop**](.claude/skills/continuous-agent-loop/) | Autonomous agent loops | Continuous automation |
+| [**cost-aware-llm-pipeline**](.claude/skills/cost-aware-llm-pipeline/) | LLM cost optimization | Cost management |
+| [**continuous-learning**](.claude/skills/continuous-learning/) | Extract reusable patterns | Knowledge management |
+| [**continuous-learning-v2**](.claude/skills/continuous-learning-v2/) | Instinct-based learning | Advanced pattern extraction |
 
 **Leadership & Process:**
 
@@ -219,6 +284,24 @@ dev/
 |-------|---------|----------|
 | [**cto-guidelines**](.claude/skills/cto-guidelines/) | Architecture decisions, team scaling | Tech leaders |
 | [**pm-guidelines**](.claude/skills/pm-guidelines/) | PRDs, roadmaps, stakeholder communication | Product managers |
+
+**Content & Marketing:**
+
+| Skill | Purpose | Best For |
+|-------|---------|----------|
+| [**article-writing**](.claude/skills/article-writing/) | Write articles, guides, blog posts | Content creation |
+| [**content-engine**](.claude/skills/content-engine/) | Multi-platform content systems | Content operations |
+| [**market-research**](.claude/skills/market-research/) | Market research and competitive analysis | Market insights |
+| [**investor-materials**](.claude/skills/investor-materials/) | Pitch decks, financial models | Fundraising |
+| [**investor-outreach**](.claude/skills/investor-outreach/) | Investor communications and outreach | Investor relations |
+
+**Specialized Tools:**
+
+| Skill | Purpose | Best For |
+|-------|---------|----------|
+| [**pricing-master**](.claude/skills/pricing-master/) | Pricing strategy and optimization | Pricing decisions |
+| [**strategic-compact**](.claude/skills/strategic-compact/) | Context compaction strategies | Context management |
+| [**verification-loop**](.claude/skills/verification-loop/) | Comprehensive session verification | Quality assurance |
 
 **Meta & Utilities:**
 
@@ -231,13 +314,14 @@ dev/
 
 **👉 [How to integrate skills →](.claude/skills/README.md)**
 
-### 🪝 Hooks (7)
+### 🪝 Hooks (10)
 
 | Hook | Type | Essential? | Customization |
 |------|------|-----------|---------------|
 | skill-activation-prompt | UserPromptSubmit | ✅ YES | ✅ None needed |
 | post-tool-use-tracker | PostToolUse | ✅ YES | ✅ None needed |
 | auto-code-review | PreToolUse | ⚠️ Optional | ✅ None needed |
+| code-quality-reminder | PreToolUse | ⚠️ Optional | ✅ None needed |
 | tsc-check | Stop | ⚠️ Optional | ⚠️ Heavy - monorepo only |
 | trigger-build-resolver | Stop | ⚠️ Optional | ⚠️ Heavy - monorepo only |
 | error-handling-reminder | Stop | ⚠️ Optional | ⚠️ Moderate |
@@ -294,7 +378,7 @@ dev/
 
 **👉 [How agents work →](.claude/agents/README.md)**
 
-### 💬 Slash Commands (4)
+### 💬 Slash Commands (5)
 
 | Command | Purpose |
 |---------|---------|
@@ -302,6 +386,7 @@ dev/
 | /dev-docs-update | Update docs before context reset |
 | /route-research-for-testing | Research route patterns for testing |
 | /browser-test | Run browser automation tests |
+| /code-quality | Run comprehensive code quality checks |
 
 ---
 
@@ -463,5 +548,9 @@ MIT License - Use freely in your projects, commercial or personal.
 - 🪝 [Hooks Setup](.claude/hooks/README.md)
 - 🤖 [Agents Guide](.claude/agents/README.md)
 - 📝 [Dev Docs Pattern](dev/README.md)
+- 🔄 [Agents vs Skills](.claude/AGENTS_VS_SKILLS.md) - When to use which
+- 🔌 [MCP Integration](.claude/MCP_INTEGRATION.md) - MCP server patterns
+- 🎯 [Orchestration Patterns](.claude/ORCHESTRATION_PATTERNS.md) - Agent-skill workflows
+- 📚 [System README](.claude/README.md) - Complete system documentation
 
 **Start here:** Copy the two essential hooks, add one skill, and see the auto-activation magic happen.
