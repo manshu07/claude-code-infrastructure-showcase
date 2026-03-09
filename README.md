@@ -13,16 +13,19 @@ Born from 6 months of real-world use managing a complex TypeScript microservices
 **Production-tested infrastructure for:**
 - ✅ **Auto-activating skills** via hooks
 - ✅ **Modular skill pattern** (500-line rule with progressive disclosure)
-- ✅ **34 specialized skills** covering backend, frontend, DevOps, AI, and more
-- ✅ **16 specialized agents** for complex tasks
+- ✅ **36 specialized skills** covering backend, frontend, DevOps, AI, and more
+- ✅ **33 specialized agents** for complex tasks
+- ✅ **50+ slash commands** for common workflows
 - ✅ **Dev docs system** that survives context resets
 - ✅ **Comprehensive examples** using generic blog domain
 - ✅ **Non-technical guide** for users of all skill levels
 - ✅ **Orchestration patterns** for agent-skill collaboration
 - ✅ **MCP integration** for extended capabilities
+- ✅ **YAML validation and troubleshooting guides**
 
 **Time investment to build:** 6 months of iteration
 **Time to integrate into your project:** 15-30 minutes
+**Last updated:** March 2025
 
 ---
 
@@ -47,7 +50,7 @@ Born from 6 months of real-world use managing a complex TypeScript microservices
 
 Browse the [skills catalog](.claude/skills/) and copy what you need.
 
-**Available Skills (34 total):**
+**Available Skills (36 total):**
 
 **Backend Development:**
 - **backend-dev-guidelines** - Node.js/Express/TypeScript patterns
@@ -103,30 +106,77 @@ Browse the [skills catalog](.claude/skills/) and copy what you need.
 **Meta:**
 - **skill-developer** - Create and manage skills
 - **route-tester** - Test authenticated API routes
+- **frontend-patterns** - React/Next.js patterns (NEW)
 
 **👉 [Skills Guide: .claude/skills/README.md](.claude/skills/README.md)**
 
 ### 🤖 I want specialized agents
 
-16 production-tested agents for complex tasks:
+33 production-tested agents for complex tasks:
 
 **Development Agents:**
+- **architect** - System design and architecture decisions
+- **planner** - Implementation planning for features
+- **code-reviewer** - Code quality and security review
+- **python-reviewer** - Python PEP 8 compliance
+- **database-reviewer** - PostgreSQL optimization
+- **security-reviewer** - Security vulnerability detection
+- **tdd-guide** - Test-driven development enforcement
+- **build-error-resolver** - Fix build and TypeScript errors
 - Code architecture review
 - Refactoring assistance
-- Python code review
 - Browser automation
 
 **Documentation & Planning:**
+- **doc-updater** - Documentation and codemap updates
 - PRD writing
 - UX writing
 - Documentation generation
+- Plan review
 
 **Quality & Debugging:**
+- **e2e-runner** - End-to-end testing with Playwright
+- **refactor-cleaner** - Dead code cleanup
 - Error debugging
 - Tech debt analysis
 - YOLO fixing (quick fixes)
 
+**Specialized:**
+- **chief-of-staff** - Communication triage
+- **harness-optimizer** - Agent harness optimization
+- **loop-operator** - Autonomous agent loops
+- **go-build-resolver** - Go build error fixes
+- **go-reviewer** - Go code review
+
 **👉 [Agents Guide: .claude/agents/README.md](.claude/agents/README.md)**
+
+### 💬 I want slash commands
+
+50+ commands for common tasks:
+
+**Planning & Development:**
+- **/plan** - Create implementation plan
+- **/tdd** - Test-driven development
+- **/code-review** - Review code changes
+- **/build-fix** - Fix build errors
+
+**Quality & Testing:**
+- **/quality-gate** - Quality checks
+- **/test-coverage** - Check test coverage
+- **/e2e** - Run end-to-end tests
+- **/verify** - Comprehensive verification
+
+**Learning & Patterns:**
+- **/learn** - Extract reusable patterns
+- **/skill-create** - Generate skills from git history
+- **/evolve** - Evolve instincts
+
+**Multi-Model:**
+- **/multi-plan** - Multi-model planning
+- **/multi-workflow** - Multi-model development
+- **/orchestrate** - Orchestrate workflows
+
+**And 40+ more commands**
 
 ### 👶 New to Claude Code?
 
@@ -223,7 +273,7 @@ dev/
 
 ## Component Catalog
 
-### 🎨 Skills (34)
+### 🎨 Skills (36)
 
 **Backend Development:**
 
@@ -309,6 +359,7 @@ dev/
 |-------|---------|----------|
 | [**skill-developer**](.claude/skills/skill-developer/) | Create and manage Claude Code skills | Custom skills |
 | [**route-tester**](.claude/skills/route-tester/) | Test authenticated API routes | API testing |
+| [**frontend-patterns**](.claude/skills/frontend-patterns/) | React/Next.js patterns (NEW) | Modern frontend |
 
 **All skills follow the modular pattern** - main file + resource files for progressive disclosure.
 
@@ -331,17 +382,41 @@ dev/
 
 **👉 [Hook setup guide →](.claude/hooks/README.md)**
 
-### 🤖 Agents (16)
+### 🤖 Agents (33)
 
 **Standalone - just copy and use!**
 
-**Code Quality & Review:**
+**Core Development (NEW):**
 
 | Agent | Purpose |
 |-------|---------|
-| code-architecture-reviewer | Review code for architectural consistency |
-| python-code-reviewer | Python-specific code review |
-| tech-debt-analyzer | Analyze and track technical debt |
+| **architect** | System design and architecture decisions |
+| **planner** | Implementation planning for features |
+| **code-reviewer** | Code quality and security review |
+| **tdd-guide** | Test-driven development enforcement |
+| **security-reviewer** | Security vulnerability detection |
+
+**Specialized Reviewers:**
+
+| Agent | Purpose |
+|-------|---------|
+| **python-reviewer** | Python PEP 8 compliance |
+| **database-reviewer** | PostgreSQL optimization |
+| **go-reviewer** | Go code review |
+| **go-build-resolver** | Go build error fixes |
+| code-architecture-reviewer | Architectural consistency |
+| python-code-reviewer | Python-specific review |
+| tech-debt-analyzer | Technical debt analysis |
+
+**Quality & Testing:**
+
+| Agent | Purpose |
+|-------|---------|
+| **build-error-resolver** | Fix build/TypeScript errors |
+| **e2e-runner** | End-to-end testing |
+| **refactor-cleaner** | Dead code cleanup |
+| frontend-error-fixer | Debug frontend errors |
+| auto-error-resolver | Auto-fix TypeScript errors |
 
 **Development & Refactoring:**
 
@@ -349,44 +424,81 @@ dev/
 |-------|---------|
 | code-refactor-master | Plan and execute refactoring |
 | refactor-planner | Create refactoring strategies |
-| browser-automation | Browser automation and scraping tasks |
-| yolo-fixer | Quick fixes without extensive planning |
+| browser-automation | Browser automation tasks |
+| yolo-fixer | Quick fixes without planning |
 
 **Documentation & Planning:**
 
 | Agent | Purpose |
 |-------|---------|
-| documentation-architect | Generate comprehensive documentation |
+| **doc-updater** | Documentation updates |
+| documentation-architect | Generate documentation |
 | prd-writer | Write Product Requirements Documents |
-| ux-writer | UX copy and user experience content |
+| ux-writer | UX copy and content |
 | plan-reviewer | Review development plans |
 
-**Debugging & Testing:**
+**Specialized:**
 
 | Agent | Purpose |
 |-------|---------|
-| frontend-error-fixer | Debug frontend errors |
-| auto-error-resolver | Auto-fix TypeScript errors |
+| **chief-of-staff** | Communication triage |
+| **harness-optimizer** | Agent harness optimization |
+| **loop-operator** | Autonomous agent loops |
 | auth-route-tester | Test authenticated endpoints |
 | auth-route-debugger | Debug auth issues |
-
-**Research:**
-
-| Agent | Purpose |
-|-------|---------|
-| web-research-specialist | Research technical issues online |
+| web-research-specialist | Research technical issues |
 
 **👉 [How agents work →](.claude/agents/README.md)**
 
-### 💬 Slash Commands (5)
+### 💬 Slash Commands (50+)
+
+**Planning & Development:**
 
 | Command | Purpose |
 |---------|---------|
-| /dev-docs | Create structured dev documentation |
-| /dev-docs-update | Update docs before context reset |
-| /route-research-for-testing | Research route patterns for testing |
-| /browser-test | Run browser automation tests |
-| /code-quality | Run comprehensive code quality checks |
+| **/plan** | Create implementation plan |
+| **/tdd** | Test-driven development |
+| **/code-review** | Review code changes |
+| **/build-fix** | Fix build errors |
+
+**Quality & Testing:**
+
+| Command | Purpose |
+|---------|---------|
+| **/quality-gate** | Quality checks |
+| **/test-coverage** | Check test coverage |
+| **/e2e** | Run E2E tests |
+| **/verify** | Comprehensive verification |
+
+**Learning & Patterns:**
+
+| Command | Purpose |
+|---------|---------|
+| **/learn** | Extract reusable patterns |
+| **/learn-eval** | Extract with self-evaluation |
+| **/skill-create** | Generate skills from git |
+| **/evolve** | Evolve instincts |
+
+**Multi-Model:**
+
+| Command | Purpose |
+|---------|---------|
+| **/multi-plan** | Multi-model planning |
+| **/multi-workflow** | Multi-model development |
+| **/multi-execute** | Multi-model execution |
+| **/multi-frontend** | Frontend-focused |
+| **/multi-backend** | Backend-focused |
+| **/orchestrate** | Orchestrate workflows |
+
+**Go Specific:**
+
+| Command | Purpose |
+|---------|---------|
+| **/go-test** | Go TDD workflow |
+| **/go-review** | Go code review |
+| **/go-build** | Fix Go build errors |
+
+**And 30+ more commands**
 
 ---
 
@@ -485,15 +597,45 @@ Some hooks expect specific structures:
 ### For Users
 **Issues with integration?**
 1. Check [CLAUDE_INTEGRATION_GUIDE.md](CLAUDE_INTEGRATION_GUIDE.md)
-2. Ask Claude: "Why isn't [skill] activating?"
-3. Open an issue with your project structure
+2. Check [.claude/TROUBLESHOOTING.md](.claude/TROUBLESHOOTING.md) (NEW)
+3. Ask Claude: "Why isn't [skill] activating?"
+4. Run `.claude/scripts/validate-skill.sh` to check skill structure (NEW)
+5. Open an issue with your project structure
 
 ### For Claude Code
 When helping users integrate:
 1. **Read CLAUDE_INTEGRATION_GUIDE.md FIRST**
-2. Ask about their project structure
-3. Customize, don't blindly copy
-4. Verify after integration
+2. Check [.claude/TROUBLESHOOTING.md](.claude/TROUBLESHOOTING.md) for common issues
+3. Ask about their project structure
+4. Customize, don't blindly copy
+5. Verify after integration
+
+---
+
+## Recent Updates (March 2025)
+
+### New Features
+- ✅ **17 new specialized agents** for complex workflows
+- ✅ **45+ new slash commands** for common tasks
+- ✅ **Comprehensive troubleshooting guide** added
+- ✅ **Skill validation script** for checking structure
+- ✅ **TypeScript build guide** for hooks
+- ✅ **Skill structure standards** documentation
+- ✅ **frontend-patterns skill** added
+- ✅ **All YAML parsing errors fixed**
+
+### Infrastructure Improvements
+- Fixed "mapping values are not allowed in this context" errors
+- Standardized skill directory naming conventions
+- Added automated validation tools
+- Enhanced documentation coverage
+
+### Documentation
+- Added `.claude/TROUBLESHOOTING.md` - comprehensive troubleshooting
+- Added `.claude/SKILL_STRUCTURE_STANDARDS.md` - directory conventions
+- Added `.claude/hooks/TYPESCRIPT_BUILD_GUIDE.md` - TypeScript hooks
+- Added `.claude/scripts/validate-skill.sh` - skill validation
+- Updated NON-TECH-GUIDE.md with latest features
 
 ---
 
@@ -552,5 +694,7 @@ MIT License - Use freely in your projects, commercial or personal.
 - 🔌 [MCP Integration](.claude/MCP_INTEGRATION.md) - MCP server patterns
 - 🎯 [Orchestration Patterns](.claude/ORCHESTRATION_PATTERNS.md) - Agent-skill workflows
 - 📚 [System README](.claude/README.md) - Complete system documentation
+- 🔧 [Troubleshooting Guide](.claude/TROUBLESHOOTING.md) - Common issues and solutions (NEW)
+- 📐 [Skill Structure Standards](.claude/SKILL_STRUCTURE_STANDARDS.md) - Directory conventions (NEW)
 
 **Start here:** Copy the two essential hooks, add one skill, and see the auto-activation magic happen.
