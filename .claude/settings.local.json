@@ -29,7 +29,11 @@
       "mcp__context7__resolve-library-id",
       "mcp__web-reader__webReader",
       "Bash(git add:*)",
-      "Bash(git reset:*)"
+      "Bash(git reset:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(.claude/scripts/validate-skill.sh:*)",
+      "Bash(bash:*)"
     ],
     "deny": [],
     "ask": []

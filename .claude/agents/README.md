@@ -227,7 +227,7 @@ Agents are autonomous Claude instances that handle specific complex tasks. Unlik
 
 **Step 1: Copy the file**
 ```bash
-cp showcase/.claude/agents/agent-name.md \\
+cp claude-skill/.claude/agents/agent-name.md \\
    your-project/.claude/agents/
 ```
 

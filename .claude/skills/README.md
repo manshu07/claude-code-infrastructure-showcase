@@ -186,7 +186,7 @@ See [CLAUDE_INTEGRATION_GUIDE.md](../../CLAUDE_INTEGRATION_GUIDE.md) for complet
 
 **Step 1: Copy the skill directory**
 ```bash
-cp -r claude-code-infrastructure-showcase/.claude/skills/backend-dev-guidelines \\
+cp -r claude-skill/.claude/skills/backend-dev-guidelines \\
       your-project/.claude/skills/
 ```
 
@@ -194,7 +194,7 @@ cp -r claude-code-infrastructure-showcase/.claude/skills/backend-dev-guidelines 
 
 If you don't have one, create it:
 ```bash
-cp claude-code-infrastructure-showcase/.claude/skills/skill-rules.json \\
+cp claude-skill/.claude/skills/skill-rules.json \\
    your-project/.claude/skills/
 ```
 
