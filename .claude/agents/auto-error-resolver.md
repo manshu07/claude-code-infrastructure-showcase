@@ -1,6 +1,6 @@
 ---
 name: auto-error-resolver
-description: Automatically fix TypeScript compilation errors
+description: Automatically fix TypeScript compilation errors 
 tools: Read, Write, Edit, MultiEdit, Bash
 ---
 
