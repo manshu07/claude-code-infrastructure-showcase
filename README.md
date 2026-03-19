@@ -50,7 +50,14 @@ Born from 6 months of real-world use managing a complex TypeScript microservices
 
 Browse the [skills catalog](.claude/skills/) and copy what you need.
 
-**Available Skills (36 total):**
+**Available Skills (41 total):**
+
+**Workflow Skills (NEW):**
+- **brainstorming** - Design exploration and refinement before implementation
+- **implementation-planning** - Create bite-sized implementation plans from specs
+- **subagent-driven-development** - Execute plans with two-stage review workflow
+- **tdd-methodology** - RED-GREEN-REFACTOR cycle with Iron Law enforcement
+- **verification-first** - Evidence-before-claims gate function
 
 **Backend Development:**
 - **backend-dev-guidelines** - Node.js/Express/TypeScript patterns
@@ -112,7 +119,7 @@ Browse the [skills catalog](.claude/skills/) and copy what you need.
 
 ### 🤖 I want specialized agents
 
-33 production-tested agents for complex tasks:
+38 production-tested agents for complex tasks:
 
 **Development Agents:**
 - **architect** - System design and architecture decisions
@@ -126,6 +133,13 @@ Browse the [skills catalog](.claude/skills/) and copy what you need.
 - Code architecture review
 - Refactoring assistance
 - Browser automation
+
+**Workflow Agents (NEW):**
+- **spec-document-reviewer** - Reviews design specs for completeness
+- **plan-document-reviewer** - Reviews implementation plans
+- **implementer** - Executes tasks following TDD methodology
+- **spec-reviewer** - First review: spec compliance checking
+- **code-quality-reviewer** - Second review: code quality assessment
 
 **Documentation & Planning:**
 - **doc-updater** - Documentation and codemap updates
@@ -181,6 +195,26 @@ Browse the [skills catalog](.claude/skills/) and copy what you need.
 ### 👶 New to Claude Code?
 
 **Start here:** Read [`NON-TECH-GUIDE.md`](NON-TECH-GUIDE.md) for a beginner-friendly introduction to using this repository.
+
+### 📋 Workflow Rules & Governance
+
+**NEW:** Production-tested workflow rules for systematic development:
+
+**Workflow Rules:**
+- **Check Before Create** - Always search for existing components before creating new ones
+- **Edit With Permission** - Always ask permission before editing existing files
+- **TDD Enforcement** - Iron Law: No production code without a failing test first
+- **Verification First** - Evidence-before-claims before completing any work
+- **Workflow Orchestration** - Complete systematic development workflow
+
+**Scripts & Tools:**
+- **search-existing.sh** - Search for existing skills, agents, scripts, rules
+- **update-after-edit.sh** - Update related files and commit after editing
+- **test-workflow-skills.sh** - Test all workflow skills (59 tests)
+- **validate-design-spec.sh** - Validate design specifications
+- **validate-implementation-plan.sh** - Validate implementation plans
+
+**👉 [Workflow Rules: .claude/rules/workflow/](.claude/rules/workflow/)**
 
 ---
 

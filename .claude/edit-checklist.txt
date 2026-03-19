@@ -1,0 +1,23 @@
+Edit Checklist - Thu, Mar 19, 2026  7:01:25 PM
+========================================
+
+File Edited: .claude/skills/tdd-methodology/SKILL.md
+Type: feat
+Message: Added TDD methodology skill
+
+Related Files to Update:
+- [ ] /c/Users/ADMIN/Desktop/MyProject/claude-skill/.claude/skills/skill-rules.json
+- [ ] /c/Users/ADMIN/Desktop/MyProject/claude-skill/README.md
+
+Git Commands:
+- [ ] git add .claude/skills/tdd-methodology/SKILL.md
+- [ ] git add /c/Users/ADMIN/Desktop/MyProject/claude-skill/.claude/skills/skill-rules.json
+- [ ] git add /c/Users/ADMIN/Desktop/MyProject/claude-skill/README.md
+- [ ] git commit -m "feat: Added TDD methodology skill"
+- [ ] git push
+
+Verification:
+- [ ] Related files updated
+- [ ] Documentation updated
+- [ ] Changes committed
+- [ ] Pushed to repository

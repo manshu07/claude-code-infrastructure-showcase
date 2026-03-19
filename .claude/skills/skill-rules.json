@@ -819,6 +819,123 @@
                 ]
             }
         },
+        "tdd-methodology": {
+            "type": "domain",
+            "enforcement": "suggest",
+            "priority": "high",
+            "description": "Enforce test-driven development with Iron Law: NO PRODUCTION CODE WITHOUT A FAILING TEST FIRST. Critical for preventing bugs, enabling refactoring, and documenting behavior.",
+            "promptTriggers": {
+                "keywords": [
+                    "tdd",
+                    "test driven",
+                    "test-first",
+                    "write test",
+                    "failing test",
+                    "red green refactor",
+                    "iron law",
+                    "test before code"
+                ],
+                "intentPatterns": [
+                    "(implement|add|create).*?(feature|bugfix|function)",
+                    "(write|create).*?test.*?first",
+                    "(before|while).*?implementing",
+                    "(test|tdd).*?first"
+                ]
+            }
+        },
+        "verification-first": {
+            "type": "domain",
+            "enforcement": "suggest",
+            "priority": "high",
+            "description": "Evidence-first verification before claiming completion. Requires running verification commands and confirming output before making success claims. Critical before commits, PRs, task completion.",
+            "promptTriggers": {
+                "keywords": [
+                    "done",
+                    "complete",
+                    "finished",
+                    "ready",
+                    "passing",
+                    "verified",
+                    "works",
+                    "fixed"
+                ],
+                "intentPatterns": [
+                    "(claim|say|state|it's).*?(done|complete|passing|working)",
+                    "(commit|push|pr|merge).*?ready",
+                    "work.*?(complete|finished|done)",
+                    "(tests|build).*?pass"
+                ]
+            }
+        },
+        "brainstorming": {
+            "type": "domain",
+            "enforcement": "suggest",
+            "priority": "high",
+            "description": "Design refinement before implementation. Explores user intent, requirements, and design through collaborative dialogue. Hard gate: no implementation before design approval.",
+            "promptTriggers": {
+                "keywords": [
+                    "design",
+                    "brainstorm",
+                    "plan",
+                    "approach",
+                    "architecture",
+                    "how should",
+                    "what do you think",
+                    "explore options"
+                ],
+                "intentPatterns": [
+                    "(how|what).*?(should|could|would).*?(design|build|implement|approach)",
+                    "(think about|consider|explore).*?approach",
+                    "(create|add|build).*?feature",
+                    "help.*?design"
+                ]
+            }
+        },
+        "implementation-planning": {
+            "type": "domain",
+            "enforcement": "suggest",
+            "priority": "high",
+            "description": "Create implementation plans from specs with bite-sized tasks (2-5 minutes each). Assumes implementer has zero context. Critical before touching code.",
+            "promptTriggers": {
+                "keywords": [
+                    "implementation plan",
+                    "break down",
+                    "task breakdown",
+                    "plan tasks",
+                    "execute plan",
+                    "step by step",
+                    "tasks"
+                ],
+                "intentPatterns": [
+                    "(create|write|make).*?plan",
+                    "(break|split).*?into.*?tasks",
+                    "(how|what).*?implement",
+                    "(execute|run).*?plan"
+                ]
+            }
+        },
+        "subagent-driven-development": {
+            "type": "domain",
+            "enforcement": "suggest",
+            "priority": "high",
+            "description": "Execute plans with subagents and two-stage review (spec compliance then code quality). Fresh subagent per task prevents context pollution.",
+            "promptTriggers": {
+                "keywords": [
+                    "execute plan",
+                    "implement tasks",
+                    "subagent",
+                    "dispatch agent",
+                    "work through tasks",
+                    "execute implementation"
+                ],
+                "intentPatterns": [
+                    "(execute|implement|run).*?plan",
+                    "(dispatch|send).*?subagent",
+                    "(work on|start|execute).*?tasks",
+                    "(implement|execute).*?with.*?subagent"
+                ]
+            }
+        },
         "verification-loop": {
             "type": "domain",
             "enforcement": "suggest",
