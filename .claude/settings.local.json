@@ -33,7 +33,20 @@
       "Bash(git commit:*)",
       "Bash(git push:*)",
       "Bash(.claude/scripts/validate-skill.sh:*)",
-      "Bash(bash:*)"
+      "Bash(bash:*)",
+      "Bash(do if head -5 \"$file\")",
+      "Bash(then echo \"$file\")",
+      "Bash(python:*)",
+      "mcp__zread__get_repo_structure",
+      "mcp__zread__read_file",
+      "Bash(mv test-driven-development:*)",
+      "Bash(mv verification-before-completion:*)",
+      "Bash(mv writing-plans:*)",
+      "Bash(./.claude/scripts/test-workflow-skills.sh:*)",
+      "Bash(chmod +x:*)",
+      "Bash(./.claude/scripts/search-existing.sh reviewer:*)",
+      "Bash(./.claude/scripts/search-existing.sh xyz-fake-component:*)",
+      "Bash(echo:*)"
     ],
     "deny": [],
     "ask": []

@@ -1,0 +1,125 @@
+# Validation Schema for Design Specs and Implementation Plans
+
+## Design Spec Validation
+
+```yaml
+design_spec:
+  required_fields:
+    - overview
+    - requirements
+    - architecture
+    - technical_approach
+    - testing_strategy
+
+  overview:
+    required:
+      - problem_statement
+      - goals
+      - success_criteria
+    validation:
+      - problem_statement: must be clear and specific
+      - goals: must be measurable
+      - success_criteria: must be testable
+
+  requirements:
+    required:
+      - functional_requirements
+      - non_functional_requirements
+    validation:
+      - each_requirement: must have acceptance criteria
+      - priority: must be specified for each
+
+  architecture:
+    required:
+      - system_design
+      - components
+      - data_flow
+    validation:
+      - components: must have clear responsibilities
+      - data_flow: must show end-to-end flow
+
+  technical_approach:
+    required:
+      - technology_stack
+      - design_decisions
+    validation:
+      - technology_stack: must specify languages/frameworks
+      - design_decisions: must include rationale
+
+  testing_strategy:
+    required:
+      - unit_tests
+      - integration_tests
+      - test_coverage_target
+    validation:
+      - test_coverage_target: must be >= 80%
+```
+
+## Implementation Plan Validation
+
+```yaml
+implementation_plan:
+  required_fields:
+    - goal
+    - architecture
+    - tech_stack
+    - tasks
+
+  goal:
+    validation:
+      - must_be: one sentence
+      - must_describe: what is being built
+
+  architecture:
+    validation:
+      - must_be: 2-3 sentences
+      - must_describe: approach
+
+  tech_stack:
+    validation:
+      - must_list: key technologies
+      - must_include: versions if applicable
+
+  tasks:
+    required:
+      - files
+      - steps
+    validation:
+      - task_granularity: 2-5 minutes per task
+      - files: must have exact paths
+      - steps: must follow TDD cycle
+      - code: must be complete
+      - commands: must be exact with expected output
+
+  task_structure:
+    required_steps:
+      - write_failing_test
+      - verify_failing
+      - write_implementation
+      - verify_passing
+      - commit
+    validation:
+      - each_step: must be verifiable
+      - test_code: must be complete
+      - implementation_code: must be complete
+      - commands: must include expected output
+```
+
+## Common Validation Errors
+
+```yaml
+errors:
+  design_spec:
+    - problem_statement_too_vague: "We need a better system"
+    - goals_not_measurable: "Make it faster"
+    - missing_acceptance_criteria: "User can login"
+    - architecture_unclear: "Use microservices"
+    - technology_stack_missing: "Backend framework"
+
+  implementation_plan:
+    - tasks_too_large: "Implement authentication system"
+    - missing_file_paths: "Create test file"
+    - incomplete_code: "Add validation logic"
+    - missing_verification: "Run tests"
+    - no_tdd_cycle: "Write code and tests"
+```
