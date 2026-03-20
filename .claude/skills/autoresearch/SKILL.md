@@ -21,8 +21,6 @@ Take any existing skill, define what "good output" looks like as binary yes/no c
 4. Keeps mutations that improve the score, discards the rest
 5. Repeats until the score ceiling is hit or the user stops it
 
-**Output:** An improved SKILL.md + `results.tsv` log + `changelog.md` of every mutation attempted + a live HTML dashboard you can watch in your browser.
-
 ---
 
 ## before starting: gather context
@@ -55,50 +53,49 @@ Do NOT skip this. You need to understand what the skill does before you can impr
 
 Convert the user's eval criteria into a structured test. Every check must be binary — pass or fail, no scales.
 
-**Format each eval as:**
+**Format each eval:**
 
 ```
 EVAL [number]: [Short name]
 Question: [Yes/no question about the output]
-Pass condition: [What "yes" looks like — be specific]
-Fail condition: [What triggers a "no"]
+Pass: [What "yes" looks like — be specific]
+Fail: [What triggers a "no"]
 ```
 
-**Rules for good evals:**
-- Binary only. Yes or no. No "rate 1-7" scales. Scales compound variability and give unreliable results.
-- Specific enough to be consistent. "Is the text readable?" is too vague. "Are all words spelled correctly with no truncated sentences?" is testable.
-- Not so narrow that the skill games the eval. "Contains fewer than 200 words" will make the skill optimize for brevity at the expense of everything else.
-- 3-6 evals is the sweet spot. More than that and the skill starts parroting eval criteria back instead of actually improving.
+**Requirements:** Binary only (yes/no). 3-6 evals is optimal. See [references/eval-guide.md](references/eval-guide.md) for detailed examples.
 
-See [references/eval-guide.md](references/eval-guide.md) for detailed examples of good vs bad evals.
+**Max score:** `[number of evals] × [runs per experiment]` (e.g., 4 evals × 5 runs = max score of 20).
 
-**Max score calculation:**
-```
-max_score = [number of evals] × [runs per experiment]
-```
+---
 
-Example: 4 evals × 5 runs = max score of 20.
+## anti-patterns for mutations
+
+**NEVER do these:**
+- Rewrite entire skill from scratch
+- Add multiple rules at once
+- Add vague instructions like "make it better"
+- Lengthen skill without specific reason
+
+**ALWAYS do these:**
+- Change ONE thing per experiment
+- Test specific, targeted changes
+- Remove complexity that doesn't add value
 
 ---
 
 ## step 3: generate the live dashboard
 
-Before running any experiments, create a live HTML dashboard at `autoresearch-[skill-name]/dashboard.html` and open it in the browser.
+Create `autoresearch-[skill-name]/dashboard.html` with:
+- Auto-refresh every 10 seconds (reads `results.json`)
+- Line chart: experiment # vs pass rate %
+- Color-coded experiments: green (keep), red (discard), blue (baseline)
+- Experiment table with: #, score, pass rate, status, description
+- Per-eval breakdown showing pass/fail rates
+- Current status: "Running experiment [N]..." or "Idle"
 
-The dashboard must:
-- Auto-refresh every 10 seconds (reads from results.tsv)
-- Show a score progression line chart (experiment number on X axis, pass rate % on Y axis)
-- Show a colored bar for each experiment: green = keep, red = discard, blue = baseline
-- Show a table of all experiments with: experiment #, score, pass rate, status, description
-- Show per-eval breakdown: which evals pass most/least across all runs
-- Show current status: "Running experiment [N]..." or "Idle"
-- Use clean styling with soft colors (white background, pastel accents, clean sans-serif font)
+Use single HTML file with inline CSS/JS, Chart.js from CDN. Open immediately after creation: `open dashboard.html`.
 
-Generate the dashboard as a single self-contained HTML file with inline CSS and JavaScript. Use Chart.js loaded from CDN for the line chart. The JS should fetch `results.json` (which you update after each experiment alongside results.tsv) and re-render.
-
-**Open it immediately** after creating it: `open dashboard.html` (macOS) so the user can see it in their browser.
-
-**Update `results.json`** after every experiment so the dashboard stays current. The JSON format:
+**Update `results.json`** after each experiment:
 
 ```json
 {
@@ -108,23 +105,15 @@ Generate the dashboard as a single self-contained HTML file with inline CSS and 
   "baseline_score": 70.0,
   "best_score": 90.0,
   "experiments": [
-    {
-      "id": 0,
-      "score": 14,
-      "max_score": 20,
-      "pass_rate": 70.0,
-      "status": "baseline",
-      "description": "original skill — no changes"
-    }
+    {"id": 0, "score": 14, "max_score": 20, "pass_rate": 70.0, "status": "baseline", "description": "original"}
   ],
   "eval_breakdown": [
-    {"name": "Text legibility", "pass_count": 8, "total": 10},
-    {"name": "Pastel colors", "pass_count": 9, "total": 10}
+    {"name": "Text legibility", "pass_count": 8, "total": 10}
   ]
 }
 ```
 
-When the run finishes (user stops it or ceiling hit), update `status` to `"complete"` so the dashboard shows a "Done" state with final summary.
+When finished, set `status` to `"complete"`.
 
 ---
 
@@ -235,71 +224,51 @@ When the user returns or the loop stops, present:
 
 ## output format
 
-The skill produces four files in `autoresearch-[skill-name]/`:
+Produces in `autoresearch-[skill-name]/`:
 
 ```
-autoresearch-[skill-name]/
-├── dashboard.html       # live browser dashboard (auto-refreshes)
-├── results.json         # data file powering the dashboard
-├── results.tsv          # score log for every experiment
-├── changelog.md         # detailed mutation log
-└── SKILL.md.baseline    # original skill before optimization
+dashboard.html       # live dashboard (auto-refreshes)
+results.json         # dashboard data
+results.tsv          # experiment log
+changelog.md         # mutation details
+SKILL.md.baseline    # original skill (unchanged)
+[user-chosen-name].md  # improved skill copy
 ```
 
-**The original SKILL.md is NEVER modified.** The improved version lives in `[user-chosen-name].md`. The user can review, diff, and manually apply changes if they choose. Do NOT offer to overwrite the original. Do NOT copy the working file over the original. The whole point is that the original stays safe.
+**Original SKILL.md is NEVER modified.** User reviews and applies changes manually.
 
-**results.tsv example:**
+**results.tsv format:**
 
 ```
 experiment	score	max_score	pass_rate	status	description
-0	14	20	70.0%	baseline	original skill — no changes
-1	16	20	80.0%	keep	added explicit instruction to avoid numbering in diagrams
-2	16	20	80.0%	discard	tried enforcing left-to-right layout — no improvement
-3	18	20	90.0%	keep	added color palette hex codes instead of vague "pastel" description
-4	18	20	90.0%	discard	added anti-pattern for neon colors — no improvement
-5	19	20	95.0%	keep	added worked example showing correct label formatting
+0	14	20	70.0%	baseline	original
+1	16	20	80.0%	keep	added explicit instruction
+2	16	20	80.0%	discard	removed ambiguity
 ```
 
 ---
 
 ## example: optimizing a diagram-generator skill
 
-**Context gathered:**
-- Target skill: `~/.claude/skills/diagram-generator/SKILL.md`
-- Test inputs: "OAuth flow diagram", "CI/CD pipeline", "microservices architecture", "user onboarding funnel", "database schema relationships"
-- Evals: (1) All text legible and spelled correctly? (2) Uses only pastel/soft colors? (3) Linear layout — left-to-right or top-to-bottom? (4) Free of numbers, ordinals, and ordering?
-- Runs per experiment: 10
-- Max score: 40
+**Setup:**
+- Skill: `~/.claude/skills/diagram-generator/SKILL.md`
+- Test inputs: 5 varied scenarios
+- Evals: text legibility, pastel colors, linear layout, no numbering
+- Runs per experiment: 10, Max score: 40
 
-**Baseline run (experiment 0):**
-Generated 10 diagrams. Scored each against 4 evals. Result: 32/40 (80%).
-Common failures: 3 diagrams had numbered steps, 2 had bright red elements, 3 had illegible small text.
+**Baseline (32/40, 80%):** Failures: numbering, bright colors, small text.
 
-**Experiment 1 — KEEP (35/40, 87.5%):**
-Change: Added "NEVER include step numbers, ordinal numbers (1st, 2nd), or any numerical ordering in diagrams" to the anti-patterns section.
-Result: Numbering failures dropped from 3 to 1. Other evals held steady.
+**Exp 1 — KEEP (35/40, 87.5%):** Added anti-numbering rule. Numbering dropped from 3 to 1.
 
-**Experiment 2 — DISCARD (34/40, 85%):**
-Change: Added "All text must be minimum 14px font size."
-Result: Legibility improved by 1, but color compliance dropped by 2. Reverted.
+**Exp 2 — DISCARD (34/40, 85%):** Enforced 14px font. Legibility +1, color -2.
 
-**Experiment 3 — KEEP (37/40, 92.5%):**
-Change: Replaced vague "pastel colors" instruction with specific hex codes: `#A8D8EA, #AA96DA, #FCBAD3, #FFFFD2, #B5EAD7`.
-Result: Color eval went from 8/10 to 10/10. Other evals held.
+**Exp 3 — KEEP (37/40, 92.5%):** Replaced "pastel" with hex codes (#A8D8EA, #AA96DA, #FCBAD3, #FFFFD2, #B5EAD7). Color eval 8/10 → 10/10.
 
-**Experiment 4 — DISCARD (37/40, 92.5%):**
-Change: Added anti-pattern "Do NOT use red (#FF0000), orange (#FF8C00), or neon green (#39FF14)."
-Result: No change. The hex codes from experiment 3 already solved the color problem. Reverted to keep skill simpler.
+**Exp 4 — DISCARD (37/40, 92.5%):** Anti-pattern for red/orange/neon. No improvement — hex codes already solved it.
 
-**Experiment 5 — KEEP (39/40, 97.5%):**
-Change: Added a worked example showing a correct diagram with properly formatted labels (no numbers, pastel fills, left-to-right flow, legible text).
-Result: Hit 39/40. One remaining failure: a complex diagram with overlapping labels. Diminishing returns — stopped.
+**Exp 5 — KEEP (39/40, 97.5%):** Added worked example. Hit 39/40. Remaining issue: complex diagrams with overlapping labels.
 
-**Final delivery:**
-- Baseline: 32/40 (80%) → Final: 39/40 (97.5%)
-- 5 experiments, 3 kept, 2 discarded
-- Top changes: specific hex codes for colors, explicit anti-numbering rule, worked example
-- Remaining issue: very complex diagrams occasionally get overlapping labels (1/40 failure rate)
+**Result:** 80% → 97.5% (5 experiments, 3 kept). Top changes: hex codes, anti-numbering, worked example.
 
 ---
 
