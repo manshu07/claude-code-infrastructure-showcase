@@ -46,7 +46,12 @@
       "Bash(chmod +x:*)",
       "Bash(./.claude/scripts/search-existing.sh reviewer:*)",
       "Bash(./.claude/scripts/search-existing.sh xyz-fake-component:*)",
-      "Bash(echo:*)"
+      "Bash(echo:*)",
+      "Bash(gh repo:*)",
+      "Bash(gh api:*)",
+      "Bash(npx skills:*)",
+      "Read(//c/Users/ADMIN/Desktop/MyProject/claude-skill/Local/claude/**)",
+      "Read(//c/Users/ADMIN/Desktop/MyProject/claude-skill/$HOME/.claude/**)"
     ],
     "deny": [],
     "ask": []
